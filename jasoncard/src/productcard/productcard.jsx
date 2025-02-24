@@ -1,39 +1,29 @@
 
-import React from "react";
+import React, { useState } from "react";
 
-// temcards = [{id: 1, Image:"./keyboardcover.jpg", name: "keyboardcover" },
-//     {id: 2, Image:"./keyboardcover.jpg", name: "cover" },
-//     {id: 3, Image:"./keyboardcover.jpg", name: "system keyboard" }
+const Images = [{id: 1, Image:"./keyboardcover.jpg", name: "keyboardcover", },
+    {id: 2, Image:"./keyboardcover.jpg", name: "cover" },
+    {id: 3, Image:"./keyboardcover.jpg", name: "system keyboard" }
 
-// ]
+]
+
 
 
 function Productcard(){
+    const [search,setsearch]=useState("");
 
-
-   
-
+    const filterdimages=Images.filter((Images)=>
+        Images.name.toLowerCase().includes(search.toLocaleLowerCase()));
+    
     return(
-//         <div className="card-container">   
-//           <ul>
-//         {itemcards.map(itemcard, key)  
-
-//             <li key={itemcard.id}>
-//                 <img src={itemcard.image} alt="keyboard" />
-//                 <p>{itemcard.name}</p>
-//             </li>
-
-
-//         }}
-
-// </ul>
-
-
-//         </div>
-
-<div>
-
-</div>
+       <div>
+        <input type="text" placeholder="seach images" value={search} onChange={(e)=>setsearch(e.target.value)}/>
+        {filterdimages.map((Image)=>(
+            <div>
+                <img src={Image.id}/>
+            </div>
+        ))}
+       </div>
     )
 }
 
